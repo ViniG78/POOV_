@@ -7,7 +7,7 @@ public class BAnco {
     public static void main(String[] args) {
        ContaBancaria conta[] = null;
        Scanner entrada = new Scanner (System.in);
-       double saque; 
+       double saque = 0; 
        int opc =0;
        while(opc != 5){
            System.out.println("1 - Cadastrar Conta");
