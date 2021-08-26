@@ -2,7 +2,7 @@
 package vacinas;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 import java.util.Set;
 import javax.swing.JOptionPane;
 
@@ -25,7 +25,7 @@ public class principal {
          switch(opc){
              case 1 -> { 
                  
-                 Vaccine newVaccine = new Vaccine();
+                 Vaccine newVaccine = new Vaccine("123","321","fabricante","Guaira SP",10,5);
                  newVaccine.setSerialNumber(JOptionPane.showInputDialog("Numero de seire: "));
                  newVaccine.setLote(JOptionPane.showInputDialog("Numero do lote: "));
                  newVaccine.setManufacturer(JOptionPane.showInputDialog("Fabricante: "));
@@ -38,15 +38,20 @@ public class principal {
              
              case 2 -> {
                  for(int i = 0; i<listVaccine.size();i++){
-                     Vaccine show;
-                     show = listVaccine.get(i);
+                     System.out.println("===========");
+                     System.out.println(listVaccine.get(i).toString());
+                     /*
                      System.out.println(" =================== ");
                      System.out.println("Numero de serie: "+show.getSerialNumber());
                      System.out.println("Lote: " + show.getLote());
                      System.out.println("Fabricante: " + show.getManufacturer());
                      System.out.println("Valor: R$" + show.getValue());
                      System.out.println("Destino: " + show.getDestiny());
-                     System.out.println("Volume: " + show.getVolume()+" ml");
+                     System.out.println("Volume: " + show.getVolume()+" ml");*/
+                 }
+                 for (Vaccine vacina : listVaccine ){
+                     System.out.println("\n"+vacina.toString());
+                 
                  }
              }
              
@@ -57,9 +62,22 @@ public class principal {
              }
              
              case 5 -> {
+                 String fabricante = JOptionPane.showInputDialog("Fabricante desejado: ");
+                 for(int i = 0;i<listVaccine.size();i++){
+                     if(listVaccine.get(i).getManufacturer().equals(fabricante)){
+                          System.out.println(listVaccine.get(i).toString());
+                     }
+                 }
              }
              
              case 6 -> {
+                 double valor = Double.parseDouble(JOptionPane.showInputDialog("valor: "));
+                 for(int i =0; i < listVaccine.size(); i++ ){
+                     if(valor<=listVaccine.get(i).getValue() ){
+                         System.out.println("\n"+listVaccine.get(i).toString());
+                     }
+                 }
+                 
              }
              
              case 7 -> System.out.println("ENCERRANDO");
