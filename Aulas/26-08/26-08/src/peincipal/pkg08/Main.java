@@ -11,11 +11,16 @@ public class Main {
         int opc =0;
         Scanner entrada = new Scanner(System.in);
         ArrayList<Curso> listaCursos = new ArrayList();
+        String cod, nm;
+        Curso cursos;
         while(opc != 12){
             System.out.println("----MENU-----");
             System.out.println("1-Inserir");
             System.out.println("2-Inserir posição");
             System.out.println("3-Mostrar");
+            System.out.println("4-");
+            System.out.println("5-");
+            System.out.println("6-");
             System.out.println("12-SAIR");
             opc = entrada.nextInt();
             switch(opc){
@@ -62,7 +67,75 @@ public class Main {
                         System.out.println(c.toString());
                     });
                 break;
-            
+                case 4: 
+                    System.out.println("Digite o codigo:");
+                    cod = entrada.next();
+                    boolean  buscaCod = false;
+                    for(int i=0; i<listaCursos.size(); i++){
+                        if(listaCursos.get(i).getCodCurso().equals(cod)){
+                            buscaCod = true;
+                            System.out.println(listaCursos.get(i));
+                        }
+                    }
+                    if(!buscaCod){
+                        System.out.println("Codigo não encontrado");
+                    }
+                 break;
+                case 5:
+                    System.out.println("Digite o nome:");
+                    nm = entrada.next();
+                    boolean  buscaNm = false;
+                    for(int i=0; i<listaCursos.size(); i++){
+                        if(listaCursos.get(i).getNome().equals(nm)){
+                            buscaNm = true;
+                            System.out.println(listaCursos.get(i));
+                        }
+                    }
+                    if(!buscaNm){
+                        System.out.println("Nome não encontrado");
+                    }
+                  break;
+                case 7:
+                    float media = 0;
+                    for(Curso c : listaCursos){
+                        media = media +c.getNotaMec();
+                    }
+                    media = media / listaCursos.size();
+                    System.out.println("A media é "+ media);
+                break;
+                case 12:
+                    System.out.println("Encerrando");
+                 break;
+                case 6:
+                    if(listaCursos.size()>0){
+                        cursos = listaCursos.get(0);
+                        for(int i =0; i< listaCursos.size();i++){
+                            if(listaCursos.get(i).getNumAlunos()> cursos.getNumAlunos()){
+                                cursos = listaCursos.get(i);
+                            }
+                            System.out.println(cursos.toString());
+                        }
+                    }
+                  break;
+                case 8:
+                    System.out.println("Digite o codigo:");
+                    cod = entrada.next();
+                    boolean aux = false;
+                    cursos = null;
+                    for (Curso c: listaCursos){
+                        if(c.getCodCurso().equals(cod)){
+                            cursos = c;
+                            aux = true;
+                        }
+                        if(aux){
+                          listaCursos.remove(cursos);
+                        }
+                    }
+                    
+                 break;
+               
+                 
+                
             }
             
             
